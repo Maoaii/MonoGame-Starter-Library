@@ -32,7 +32,7 @@ public class Game1 : Game
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-        player = new Player(Content.Load<Texture2D>("player"), new Vector2(100, 100));
+        player = new Player(Content.Load<Texture2D>("Entities/rectangle_entity"), new Vector2(100, 100));
     }
 
     protected override void Update(GameTime gameTime)

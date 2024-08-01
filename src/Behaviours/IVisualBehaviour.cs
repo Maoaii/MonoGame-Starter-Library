@@ -4,9 +4,8 @@ using src.Entities;
 
 namespace src.Behaviours
 {
-    public abstract class EntityBehaviour
+    interface IVisualBehaviour
     {
-        protected Entity parent;
-
+        public void Draw(SpriteBatch spriteBatch);
     }
 }

@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 
@@ -13,7 +14,17 @@ namespace src.Behaviours {
 
         public void Update(GameTime gameTime) {
             foreach (var behaviour in behaviours.Values) {
-                behaviour.Update(gameTime);
+                if (behaviour is IPhysicalBehaviour) {
+                    (behaviour as IPhysicalBehaviour).Update(gameTime);
+                }
+            }
+        }
+
+        public void Draw(SpriteBatch spriteBatch) {
+            foreach (var behaviour in behaviours.Values) {
+                if (behaviour is IVisualBehaviour) {
+                    (behaviour as IVisualBehaviour).Draw(spriteBatch);
+                }
             }
         }
 

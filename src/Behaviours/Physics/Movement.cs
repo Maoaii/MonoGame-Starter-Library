@@ -1,9 +1,10 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using src.Entities;
 
 namespace src.Behaviours.Physics {
-    class Movement : EntityBehaviour
+    class Movement : EntityBehaviour, IPhysicalBehaviour
     {
         private Vector2 velocity;
         private float speed;
@@ -15,7 +16,7 @@ namespace src.Behaviours.Physics {
             this.speed = speed;
         }
 
-        public override void Update(GameTime gameTime)
+        public void Update(GameTime gameTime)
         {
             velocity = Vector2.Zero;
             ReadInput();
@@ -25,12 +26,6 @@ namespace src.Behaviours.Physics {
         private void ReadInput() {
             KeyboardState state = Keyboard.GetState();
 
-            if (state.IsKeyDown(Keys.W)) {
-                velocity.Y += -speed;
-            }
-            if (state.IsKeyDown(Keys.S)) {
-                velocity.Y += speed;
-            }
             if (state.IsKeyDown(Keys.A)) {
                 velocity.X += -speed;
             }
@@ -40,7 +35,8 @@ namespace src.Behaviours.Physics {
         }
 
         private void Move(GameTime gameTime) {
-            parent.Position += velocity;
+            parent.Velocity += new Vector2(velocity.X, 0);
+            // parent.Position += new Vector2(velocity.X, 0);
         }
     }
 }

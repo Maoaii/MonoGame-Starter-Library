@@ -3,7 +3,7 @@ using src.Entities;
 
 namespace src.Behaviours.Physics
 {
-    class RectangleCollider : EntityBehaviour, IRectangleCollider
+    class RectangleCollider : EntityBehaviour, IRectangleCollider, IPhysicalBehaviour
     {
         private Vector2 position;
         private Rectangle hitbox;
@@ -17,7 +17,7 @@ namespace src.Behaviours.Physics
             hitbox = new Rectangle((int)position.X, (int)position.Y, width, height);
         }
 
-        public override void Update(GameTime gameTime)
+        public void Update(GameTime gameTime)
         {
             position = parent.Position;
             hitbox.X = (int)position.X;

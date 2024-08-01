@@ -1,9 +1,10 @@
+using System;
 using Microsoft.Xna.Framework;
 using src.Entities;
 
 namespace src.Behaviours.Physics
 {
-    public class Gravity : EntityBehaviour
+    public class Gravity : EntityBehaviour, IPhysicalBehaviour
     {
         private Vector2 acceleration;
         public Gravity(Entity parent, Vector2 acceleration)
@@ -12,15 +13,9 @@ namespace src.Behaviours.Physics
             this.acceleration = acceleration;
         }
 
-        public override void Update(GameTime gameTime)
+        public void Update(GameTime gameTime)
         {
-            parent.Velocity += acceleration;
-            ApplyGravity();
-        }
-
-        private void ApplyGravity()
-        {
-            parent.Position += parent.Velocity;
+            parent.Velocity += new Vector2(0, acceleration.Y);
         }
     }
 }

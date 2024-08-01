@@ -4,9 +4,8 @@ using src.Entities;
 
 namespace src.Behaviours
 {
-    public abstract class EntityBehaviour
+    interface IPhysicalBehaviour
     {
-        protected Entity parent;
-
+        public void Update(GameTime gameTime);
     }
 }
