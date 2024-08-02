@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using src;
 using src.Entities;
 
 namespace MonoGameLibrary;
@@ -26,6 +27,10 @@ public class Game1 : Game
         _graphics.IsFullScreen = false;
         _graphics.ApplyChanges();
         base.Initialize();
+
+        Globals.Content = Content;
+        Globals.Graphics = _graphics;
+        Globals.SpriteBatch = _spriteBatch;
     }
 
     protected override void LoadContent()
@@ -37,6 +42,8 @@ public class Game1 : Game
 
     protected override void Update(GameTime gameTime)
     {
+        Globals.Update(gameTime);
+        
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
 
