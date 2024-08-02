@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using src.Behaviours.Physics;
-using System;
 using src.Behaviours.Visuals;
 using src.Behaviours.DataClasses;
 
@@ -32,19 +31,19 @@ namespace src.Entities {
 
         private void AddBaseBehaviours() {
             // Rectangle collider
-            behaviourManager.AddBehaviour(new RectangleCollider(this, position, sprite.Width, sprite.Height));
+            behaviourManager.AddBehaviour(new RectangleColliderBehaviour(this, position, sprite.Width, sprite.Height));
 
             // Gravity
-            behaviourManager.AddBehaviour(new Gravity(this, JumpAndGravityResource));
+            behaviourManager.AddBehaviour(new GravityBehaviour(this, JumpAndGravityResource));
 
             // Movement
-            behaviourManager.AddBehaviour(new Movement(this, MOVEMENT_SPEED));
+            behaviourManager.AddBehaviour(new MovementBehaviour(this, MOVEMENT_SPEED));
 
             // Jumping
             behaviourManager.AddBehaviour(new JumpBehaviour(this, JumpAndGravityResource, Keys.Space));
 
             // Sprite renderer
-            behaviourManager.AddBehaviour(new AnimatedSpriteRenderer(this, sprite));
+            behaviourManager.AddBehaviour(new AnimatedSpriteBehaviour(this, sprite));
         }
 
         public override void Draw(SpriteBatch spriteBatch)

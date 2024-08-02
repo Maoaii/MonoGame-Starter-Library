@@ -3,14 +3,14 @@ using src.Entities;
 
 namespace src.Behaviours.Physics
 {
-    class RectangleCollider : EntityBehaviour, IRectangleCollider, IPhysicalBehaviour
+    class RectangleColliderBehaviour : EntityBehaviour, IColliderBehaviour, IPhysicalBehaviour
     {
         private Vector2 position;
         private Rectangle hitbox;
 
         public Rectangle Hitbox { get { return hitbox; } }
 
-        public RectangleCollider(Entity parent, Vector2 position, int width, int height)
+        public RectangleColliderBehaviour(Entity parent, Vector2 position, int width, int height)
         {
             this.parent = parent;
             this.position = position;
@@ -24,7 +24,7 @@ namespace src.Behaviours.Physics
             hitbox.Y = (int)position.Y;
         }
 
-        public bool IsColliding(IRectangleCollider other)
+        public bool IsColliding(IColliderBehaviour other)
         {
             return hitbox.Intersects(other.Hitbox);
         }

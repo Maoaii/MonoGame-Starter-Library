@@ -5,11 +5,11 @@ using src.Entities;
 
 
 namespace src.Behaviours.Visuals {
-    public class AnimatedSpriteRenderer : EntityBehaviour, IVisualBehaviour
+    public class AnimatedSpriteBehaviour : EntityBehaviour, IVisualBehaviour
     {
         private Texture2D sprite;
 
-        public AnimatedSpriteRenderer(Entity parent, Texture2D sprite)
+        public AnimatedSpriteBehaviour(Entity parent, Texture2D sprite)
         {
             this.parent = parent;
             this.sprite = sprite;

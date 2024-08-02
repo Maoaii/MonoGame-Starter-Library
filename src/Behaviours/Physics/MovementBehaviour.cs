@@ -4,12 +4,12 @@ using Microsoft.Xna.Framework.Input;
 using src.Entities;
 
 namespace src.Behaviours.Physics {
-    class Movement : EntityBehaviour, IPhysicalBehaviour
+    class MovementBehaviour : EntityBehaviour, IPhysicalBehaviour
     {
         private Vector2 velocity;
         private float speed;
 
-        public Movement(Entity parent, float speed)
+        public MovementBehaviour(Entity parent, float speed)
         {
             this.parent = parent;
             this.velocity = Vector2.Zero;
