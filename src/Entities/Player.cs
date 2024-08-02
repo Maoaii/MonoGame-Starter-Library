@@ -5,15 +5,21 @@ using Microsoft.Xna.Framework.Input;
 using src.Behaviours.Physics;
 using System;
 using src.Behaviours.Visuals;
+using src.Behaviours.DataClasses;
 
 namespace src.Entities {
     public class Player : Entity {
 
-        private static Vector2 GRAVITY = new Vector2(0, 10f);
         private static float MOVEMENT_SPEED = 5f;
-        private static float JUMP_FORCE = 300f;
 
         private BehaviourManager behaviourManager;
+
+        private JumpAndGravity JumpAndGravityResource = new()
+        {
+            JumpHeight = 100,
+            JumpTimeToPeak = 0.3f,
+            JumpTimeToDescent = 0.2f
+        };
 
         public Player(Texture2D sprite, Vector2 position) {
             this.sprite = sprite;
@@ -29,13 +35,13 @@ namespace src.Entities {
             behaviourManager.AddBehaviour(new RectangleCollider(this, position, sprite.Width, sprite.Height));
 
             // Gravity
-            behaviourManager.AddBehaviour(new Gravity(this, GRAVITY));
+            behaviourManager.AddBehaviour(new Gravity(this, JumpAndGravityResource));
 
             // Movement
             behaviourManager.AddBehaviour(new Movement(this, MOVEMENT_SPEED));
 
             // Jumping
-            behaviourManager.AddBehaviour(new JumpBehaviour(this, JUMP_FORCE, Keys.Space));
+            behaviourManager.AddBehaviour(new JumpBehaviour(this, JumpAndGravityResource, Keys.Space));
 
             // Sprite renderer
             behaviourManager.AddBehaviour(new AnimatedSpriteRenderer(this, sprite));
@@ -48,18 +54,21 @@ namespace src.Entities {
 
         public override void Update(GameTime gameTime)
         {
-            float deltaTime = (float)gameTime.ElapsedGameTime.Ticks / TimeSpan.TicksPerSecond;
-
             behaviourManager.Update(gameTime);
             
-            position.X += velocity.X * deltaTime;
+            position.X += velocity.X * Globals.Time;
                 
             if (position.Y > 480 - sprite.Height) {
                 velocity.Y = 0;
                 position.Y = 480 - sprite.Height;
+                
+                EntityBehaviour jumpBehaviour = behaviourManager.GetBehaviour(typeof(JumpBehaviour).Name);
+                if (jumpBehaviour != null) {
+                    ((JumpBehaviour)jumpBehaviour).ResetJump();
+                }
             }
             else {
-                position.Y += velocity.Y * deltaTime;
+                position.Y += velocity.Y * Globals.Time;
             }
         }
     }

@@ -1,4 +1,5 @@
 using System;
+using src.Behaviours.DataClasses;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using src.Entities;
@@ -7,12 +8,18 @@ namespace src.Behaviours.Physics
 {
     class JumpBehaviour : EntityBehaviour, IPhysicalBehaviour
     {
-        private float jumpForce;
+        private JumpAndGravity jumpResource;
         private Keys jumpKey;
-        public JumpBehaviour(Entity parent, float jumpForce, Keys jumpKey)
+
+        private float JumpForce => (float)(2 * jumpResource.JumpHeight / jumpResource.JumpTimeToPeak)*-1;
+
+        private bool canJump = true;
+        private bool variableJump = false;
+
+        public JumpBehaviour(Entity parent, JumpAndGravity jumpResource, Keys jumpKey)
         {
             this.parent = parent;
-            this.jumpForce = jumpForce;
+            this.jumpResource = jumpResource;
             this.jumpKey = jumpKey;
         }
         public void Update(GameTime gameTime)
@@ -21,11 +28,25 @@ namespace src.Behaviours.Physics
             if (state.IsKeyDown(jumpKey)) {
                 Jump();
             }
+            if (state.IsKeyUp(jumpKey) && !variableJump) {
+                VariableJump();
+            }
         }
 
-        public void Jump() {
-            parent.Velocity = new Vector2(parent.Velocity.X, -jumpForce);
+        private void Jump() {
+            if (!canJump) return;
+            parent.Velocity = new Vector2(parent.Velocity.X, JumpForce);
+            canJump = false;
         }
 
+        private void VariableJump() {
+            parent.Velocity = new Vector2(parent.Velocity.X, parent.Velocity.Y * 0.5f);
+            variableJump = true;
+        }
+
+        public void ResetJump() {
+            canJump = true;
+            variableJump = false;
+        }
     }
 }

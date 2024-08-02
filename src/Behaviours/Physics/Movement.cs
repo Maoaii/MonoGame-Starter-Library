@@ -20,7 +20,7 @@ namespace src.Behaviours.Physics {
         {
             velocity = Vector2.Zero;
             ReadInput();
-            Move(gameTime);
+            Move();
         }
 
         private void ReadInput() {
@@ -34,9 +34,8 @@ namespace src.Behaviours.Physics {
             }
         }
 
-        private void Move(GameTime gameTime) {
+        private void Move() {
             parent.Velocity += new Vector2(velocity.X, 0);
-            // parent.Position += new Vector2(velocity.X, 0);
         }
     }
 }
