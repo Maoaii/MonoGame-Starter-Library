@@ -1,8 +1,8 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using src.Entities;
+using MonoGameLibrary.Entities;
 
-namespace src.Behaviours
+namespace MonoGameLibrary.Behaviours
 {
     interface IVisualBehaviour
     {

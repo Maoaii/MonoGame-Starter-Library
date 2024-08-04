@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 
 
-namespace src.Behaviours {
+namespace MonoGameLibrary.Behaviours {
     class BehaviourManager {
         Dictionary<string, EntityBehaviour> behaviours;
 

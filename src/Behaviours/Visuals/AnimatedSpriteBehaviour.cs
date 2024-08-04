@@ -1,10 +1,10 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using src.Entities;
+using MonoGameLibrary.Entities;
 
 
-namespace src.Behaviours.Visuals {
+namespace MonoGameLibrary.Behaviours.Visuals {
     public class AnimatedSpriteBehaviour : EntityBehaviour, IVisualBehaviour
     {
         private Texture2D sprite;

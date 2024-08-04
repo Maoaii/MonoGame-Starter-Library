@@ -1,9 +1,9 @@
 
 
-using src.Behaviours.DataClasses;
-using src.Entities;
+using MonoGameLibrary.Behaviours.DataClasses;
+using MonoGameLibrary.Entities;
 
-namespace src.Behaviours.Physics.JumpGravity {
+namespace MonoGameLibrary.Behaviours.Physics.JumpGravity {
     public interface IJumpBehaviour {
 
         void Jump(Entity entity);

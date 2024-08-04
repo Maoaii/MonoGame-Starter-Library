@@ -1,16 +1,17 @@
-using src.Behaviours;
+using MonoGameLibrary.Behaviours;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using src.Behaviours.Physics;
-using src.Behaviours.Physics.Movement;
-using src.Behaviours.Visuals;
-using src.Behaviours.DataClasses;
+using MonoGameLibrary.Behaviours.Physics;
+using MonoGameLibrary.Behaviours.Physics.Movement;
+using MonoGameLibrary.Behaviours.Visuals;
+using MonoGameLibrary.Behaviours.DataClasses;
+using MonoGameLibrary.Utilities;
 
-namespace src.Entities {
+namespace MonoGameLibrary.Entities {
     public class Player : Entity {
 
-        private static float MOVEMENT_SPEED = 5f;
+        private static float MOVEMENT_SPEED = 300f;
 
         private BehaviourManager behaviourManager;
 
@@ -38,7 +39,7 @@ namespace src.Entities {
             behaviourManager.AddBehaviour(new GravityBehaviour(this, JumpAndGravityResource));
 
             // Movement
-            behaviourManager.AddBehaviour(new MovementBehaviour(this, MOVEMENT_SPEED));
+            behaviourManager.AddBehaviour(new PlayerMovementBehaviour(this, MOVEMENT_SPEED));
 
             // Jumping
             behaviourManager.AddBehaviour(new JumpBehaviour(this, JumpAndGravityResource, Keys.Space));

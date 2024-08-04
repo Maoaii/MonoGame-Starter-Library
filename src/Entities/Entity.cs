@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 
-namespace src.Entities {
+namespace MonoGameLibrary.Entities {
     public abstract class Entity
     {
         protected Texture2D sprite;

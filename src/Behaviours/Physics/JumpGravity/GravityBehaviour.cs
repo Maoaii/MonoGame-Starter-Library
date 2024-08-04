@@ -1,10 +1,10 @@
 using System;
 using Microsoft.Xna.Framework;
-using src.Behaviours.DataClasses;
-using src.Behaviours.Physics.JumpGravity;
-using src.Entities;
+using MonoGameLibrary.Behaviours.DataClasses;
+using MonoGameLibrary.Behaviours.Physics.JumpGravity;
+using MonoGameLibrary.Entities;
 
-namespace src.Behaviours.Physics
+namespace MonoGameLibrary.Behaviours.Physics
 {
     public class GravityBehaviour : EntityBehaviour, IPhysicalBehaviour, IGravityBehaviour
     {

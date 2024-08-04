@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework;
-using src.Entities;
+using MonoGameLibrary.Entities;
 
-namespace src.Behaviours.Physics
+namespace MonoGameLibrary.Behaviours.Physics
 {
     class RectangleColliderBehaviour : EntityBehaviour, IColliderBehaviour, IPhysicalBehaviour
     {
