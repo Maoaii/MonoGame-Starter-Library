@@ -1,8 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using src;
 using MonoGameLibrary.Entities;
+using MonoGameLibrary.Utilities;
 
 namespace MonoGameLibrary;
 

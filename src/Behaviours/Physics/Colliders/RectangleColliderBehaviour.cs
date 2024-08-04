@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using MonoGameLibrary.Behaviours.Physics.Colliders;
 using MonoGameLibrary.Entities;
 
 namespace MonoGameLibrary.Behaviours.Physics

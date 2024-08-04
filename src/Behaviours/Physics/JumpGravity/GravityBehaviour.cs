@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using MonoGameLibrary.Behaviours.DataClasses;
 using MonoGameLibrary.Behaviours.Physics.JumpGravity;
 using MonoGameLibrary.Entities;
+using MonoGameLibrary.Utilities;
 
 namespace MonoGameLibrary.Behaviours.Physics
 {

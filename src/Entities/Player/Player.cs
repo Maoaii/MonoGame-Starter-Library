@@ -39,7 +39,7 @@ namespace MonoGameLibrary.Entities {
             behaviourManager.AddBehaviour(new GravityBehaviour(this, JumpAndGravityResource));
 
             // Movement
-            behaviourManager.AddBehaviour(new PlayerMovementBehaviour(this, MOVEMENT_SPEED));
+            behaviourManager.AddBehaviour(new PlayerMovementBehaviour(this, MOVEMENT_SPEED, 0.3f, 0.2f));
 
             // Jumping
             behaviourManager.AddBehaviour(new JumpBehaviour(this, JumpAndGravityResource, Keys.Space));
