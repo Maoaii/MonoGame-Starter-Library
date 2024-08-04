@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using src.Behaviours.Physics;
+using src.Behaviours.Physics.Movement;
 using src.Behaviours.Visuals;
 using src.Behaviours.DataClasses;
 

@@ -3,8 +3,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using src.Entities;
 
-namespace src.Behaviours.Physics {
-    class MovementBehaviour : EntityBehaviour, IPhysicalBehaviour
+namespace src.Behaviours.Physics.Movement {
+    class MovementBehaviour : EntityBehaviour, IPhysicalBehaviour, IMovementBehaviour
     {
         private Vector2 velocity;
         private float speed;
@@ -23,7 +23,8 @@ namespace src.Behaviours.Physics {
             Move();
         }
 
-        private void ReadInput() {
+        public void ReadInput()
+        {
             KeyboardState state = Keyboard.GetState();
 
             if (state.IsKeyDown(Keys.A)) {
@@ -34,7 +35,8 @@ namespace src.Behaviours.Physics {
             }
         }
 
-        private void Move() {
+        public void Move()
+        {
             parent.Velocity += new Vector2(velocity.X, 0);
         }
     }
