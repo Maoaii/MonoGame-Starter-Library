@@ -11,18 +11,15 @@ using System;
 
 namespace MonoGameLibrary.Entities {
     public class Player : Entity {
-
-        private static float MOVEMENT_SPEED = 300f;
-
         private BehaviourManager behaviourManager;
 
-        private JumpAndGravity JumpAndGravityResource;
+        private JumpAndGravitySchema JumpAndGravitySchemaResource;
 
         public Player(Texture2D sprite, Vector2 position) {
             this.sprite = sprite;
             this.position = position;
             behaviourManager = new BehaviourManager();
-            JumpAndGravityResource = JSONLiser.Load<JumpAndGravity>("./Data/PlayerJumpAndGravityStats.json");
+            JumpAndGravitySchemaResource = JSONLiser.Load<JumpAndGravitySchema>("./Data/PlayerJumpAndGravityStats.json");
 
             // Add behaviours
             AddBaseBehaviours();
@@ -33,13 +30,13 @@ namespace MonoGameLibrary.Entities {
             behaviourManager.AddBehaviour(new RectangleColliderBehaviour(this, position, sprite.Width, sprite.Height));
 
             // Gravity
-            behaviourManager.AddBehaviour(new GravityBehaviour(this, JumpAndGravityResource));
+            behaviourManager.AddBehaviour(new GravityBehaviour(this, JumpAndGravitySchemaResource));
 
             // Movement
-            behaviourManager.AddBehaviour(new PlayerMovementBehaviour(this, MOVEMENT_SPEED, 0.3f, 0.2f));
+            behaviourManager.AddBehaviour(new PlayerMovementBehaviour(this, JSONLiser.Load<MovementSchema>("./Data/PlayerMovementStats.json")));
 
             // Jumping
-            behaviourManager.AddBehaviour(new JumpBehaviour(this, JumpAndGravityResource, Keys.Space));
+            behaviourManager.AddBehaviour(new JumpBehaviour(this, JumpAndGravitySchemaResource, Keys.Space));
 
             // Sprite renderer
             behaviourManager.AddBehaviour(new AnimatedSpriteBehaviour(this, sprite));

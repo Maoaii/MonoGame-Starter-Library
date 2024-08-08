@@ -9,16 +9,16 @@ namespace MonoGameLibrary.Behaviours.Physics
 {
     class JumpBehaviour : EntityBehaviour, IPhysicalBehaviour, IJumpBehaviour
     {
-        private JumpAndGravity jumpResource;
+        private JumpAndGravitySchema jumpStats;
         private Keys jumpKey;
 
         private bool canJump = true;
         private bool variableJump = false;
 
-        public JumpBehaviour(Entity parent, JumpAndGravity jumpResource, Keys jumpKey)
+        public JumpBehaviour(Entity parent, JumpAndGravitySchema jumpStats, Keys jumpKey)
         {
             this.parent = parent;
-            this.jumpResource = jumpResource;
+            this.jumpStats = jumpStats;
             this.jumpKey = jumpKey;
         }
         
@@ -33,13 +33,13 @@ namespace MonoGameLibrary.Behaviours.Physics
             }
         }
 
-        public float CalculateJumpForce(JumpAndGravity jumpResource) {
-            return (float)(2 * jumpResource.JumpHeight / jumpResource.JumpTimeToPeak)*-1;
+        public float CalculateJumpForce(JumpAndGravitySchema jumpStats) {
+            return (float)(2 * jumpStats.JumpHeight / jumpStats.JumpTimeToPeak)*-1;
         }
 
         public void Jump(Entity entity) {
             if (!canJump) return;
-            entity.Velocity = new Vector2(entity.Velocity.X, CalculateJumpForce(jumpResource));
+            entity.Velocity = new Vector2(entity.Velocity.X, CalculateJumpForce(jumpStats));
             canJump = false;
         }
 

@@ -9,6 +9,6 @@ namespace MonoGameLibrary.Behaviours.Physics.JumpGravity {
         void Jump(Entity entity);
         void VariableJump(Entity entity);
         void ResetJump();
-        float CalculateJumpForce(JumpAndGravity jumpResource);
+        float CalculateJumpForce(JumpAndGravitySchema jumpResource);
     }
 }

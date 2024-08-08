@@ -1,0 +1,5 @@
+{
+  "MaxSpeed": 300,
+  "TimeToMaxSpeed": 0.3,
+  "TimeToStop": 0.2
+}

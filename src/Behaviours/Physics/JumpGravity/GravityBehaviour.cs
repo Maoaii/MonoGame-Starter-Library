@@ -9,8 +9,8 @@ namespace MonoGameLibrary.Behaviours.Physics
 {
     public class GravityBehaviour : EntityBehaviour, IPhysicalBehaviour, IGravityBehaviour
     {
-        private readonly JumpAndGravity gravityResource;
-        public GravityBehaviour(Entity parent, JumpAndGravity gravityResource)
+        private readonly JumpAndGravitySchema gravityResource;
+        public GravityBehaviour(Entity parent, JumpAndGravitySchema gravityResource)
         {
             this.parent = parent;
             this.gravityResource = gravityResource;
@@ -21,7 +21,7 @@ namespace MonoGameLibrary.Behaviours.Physics
             ApplyGravity(parent);
         }
 
-        public float CalculateGravity(JumpAndGravity gravityResource, Entity entity)
+        public float CalculateGravity(JumpAndGravitySchema gravityResource, Entity entity)
         {
             if (entity.Velocity.Y < 0)
             {

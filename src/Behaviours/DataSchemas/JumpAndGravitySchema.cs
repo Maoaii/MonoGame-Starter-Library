@@ -1,5 +1,5 @@
 namespace MonoGameLibrary.Behaviours.DataSchemas {
-    public class JumpAndGravity
+    public class JumpAndGravitySchema
     {
     public float JumpHeight { get; set; }
     public float JumpTimeToPeak { get; set; }
