@@ -5,8 +5,9 @@ using Microsoft.Xna.Framework.Input;
 using MonoGameLibrary.Behaviours.Physics;
 using MonoGameLibrary.Behaviours.Physics.Movement;
 using MonoGameLibrary.Behaviours.Visuals;
-using MonoGameLibrary.Behaviours.DataClasses;
+using MonoGameLibrary.Behaviours.DataSchemas;
 using MonoGameLibrary.Utilities;
+using System;
 
 namespace MonoGameLibrary.Entities {
     public class Player : Entity {
@@ -15,17 +16,13 @@ namespace MonoGameLibrary.Entities {
 
         private BehaviourManager behaviourManager;
 
-        private JumpAndGravity JumpAndGravityResource = new()
-        {
-            JumpHeight = 100,
-            JumpTimeToPeak = 0.3f,
-            JumpTimeToDescent = 0.2f
-        };
+        private JumpAndGravity JumpAndGravityResource;
 
         public Player(Texture2D sprite, Vector2 position) {
             this.sprite = sprite;
             this.position = position;
             behaviourManager = new BehaviourManager();
+            JumpAndGravityResource = JSONLiser.Load<JumpAndGravity>("./Data/PlayerJumpAndGravityStats.json");
 
             // Add behaviours
             AddBaseBehaviours();

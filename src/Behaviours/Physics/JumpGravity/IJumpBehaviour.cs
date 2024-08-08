@@ -1,6 +1,6 @@
 
 
-using MonoGameLibrary.Behaviours.DataClasses;
+using MonoGameLibrary.Behaviours.DataSchemas;
 using MonoGameLibrary.Entities;
 
 namespace MonoGameLibrary.Behaviours.Physics.JumpGravity {

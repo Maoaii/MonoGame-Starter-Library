@@ -1,6 +1,6 @@
 using System;
 using Microsoft.Xna.Framework;
-using MonoGameLibrary.Behaviours.DataClasses;
+using MonoGameLibrary.Behaviours.DataSchemas;
 using MonoGameLibrary.Behaviours.Physics.JumpGravity;
 using MonoGameLibrary.Entities;
 using MonoGameLibrary.Utilities;

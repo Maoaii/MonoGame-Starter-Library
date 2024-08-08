@@ -1,5 +1,5 @@
 using System;
-using MonoGameLibrary.Behaviours.DataClasses;
+using MonoGameLibrary.Behaviours.DataSchemas;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using MonoGameLibrary.Entities;

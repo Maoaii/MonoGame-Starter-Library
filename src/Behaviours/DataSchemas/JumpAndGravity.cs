@@ -1,4 +1,4 @@
-namespace MonoGameLibrary.Behaviours.DataClasses {
+namespace MonoGameLibrary.Behaviours.DataSchemas {
     public class JumpAndGravity
     {
     public float JumpHeight { get; set; }
